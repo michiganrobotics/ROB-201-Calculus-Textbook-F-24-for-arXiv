@@ -1,0 +1,155 @@
+\documentclass[letterpaper]{book}
+\PassOptionsToPackage{usenames,dvipsnames,svgnames,table,xcdraw}{xcolor}
+\PassOptionsToPackage{dvipsnames,svgnames,table,xcdraw}{enumitems}
+
+\input{Defines/definesPackages}
+\input{Defines/definesCommands}
+\input{Defines/definesJuliaCodeCell}
+%\parindent
+
+\makeatletter
+\renewcommand{\frontmatter}{\cleardoublepage\@mainmatterfalse}
+\renewcommand{\mainmatter}{\cleardoublepage\@mainmattertrue}
+\makeatother
+
+\title{Calculus for the Modern Engineer: Math at the Scale of Life\thanks{Inspired by Prof. Chad Jenkins}}
+\date{}
+\author{Jessy Grizzle\\ Robotics Department, University of Michigan, Ann Arbor
+\and Content contributed by ....}
+
+%\doublespacing
+
+\setlength{\parskip}{2mm}
+\setlength{\cftbeforesecskip}{0.7mm}
+
+
+\begin{document}
+\lstset{extendedchars=true,literate={α}{$\alpha$}1 {β}{$\beta$}1 {γ}{$\gamma$}1 {π}{$\pi$}1}
+
+% Front matter
+\frontmatter
+\pagenumbering{roman} % Use Roman numerals for front matter pages
+
+
+\begingroup
+\thispagestyle{empty}
+% \AddToShipoutPicture*{\put(0,0)  {\includegraphics[scale=.65]{graphics/CoverPrefacePhilosophy/rob201_cover-calculusV02.png}}} % Image background
+% \mbox{  }
+
+
+\AddToShipoutPicture*{\put(0,0)  {\includegraphics[scale=1]{graphics/CoverPrefacePhilosophy/RenayCover25August2024.png}}} % Image background
+\mbox{  }
+
+% \AddToShipoutPicture*{\put(0,0)  {\includegraphics[scale=.3952]{graphics/CoverPrefacePhilosophy/RenayCover08February2024.JPG}}} % Image background
+% \mbox{  }
+
+\endgroup
+
+\clearpage
+
+
+\begingroup
+\thispagestyle{empty}
+%\centerline
+% \AddToShipoutPicture*{\put(240,50)  {\includegraphics[scale=0.35]{media_users_user_14_project_222374_images_res_cassie_image.png}}} % Image background
+\AddToShipoutPicture*{\put(40,450)  {\includegraphics[scale=0.35]{graphics/CoverPrefacePhilosophy/WorkTogether.png}}} % Image background
+
+
+~\vfill
+\thispagestyle{empty}
+\noindent Cover design by T. Renay Hutchings, Student Administrative Assistant, Michigan Robotics
+
+\vspace*{2cm}
+\noindent\copyright\space 2024, 2023, Jessy Grizzle,  Professor of Robotics, University of Michigan	\\
+\noindent \textsc{Jerry W. and Carol L. Levin Professor of Engineering\\
+Elmer G. Gilbert Distinguished University Professor}\\
+
+%\noindent \textsc{github.com/LaurethTeX/Clustering}\\ % URL
+
+\noindent Composed between April 2023 and December 2024 for use in ROB 201, Calculus for the Modern Engineer, a second-year course.
+\\ % License information
+
+\noindent \textit{First release, August 26, 2024.} % Printing/edition date
+
+
+\endgroup
+
+\frontmatter
+\tableofcontents
+\chapter{Preface}
+\input{Chapters/FrontMatter/Preface.tex}
+\chapter{Philosophy of the Course}
+\input{Chapters/FrontMatter/Philosophy.tex}
+\chapter{Topic Coverage by the Traditional Paradigm}
+\input{Chapters/FrontMatter/Topics.tex}
+
+
+% Main matter
+\mainmatter
+\pagenumbering{arabic} % Switch to Arabic numerals for main matter
+
+\setlength{\parskip}{3pt}
+
+\chapter{Pre-calculus: Notation, Functions, and Various Algebraic Facts}
+\label{chap:Intro}
+\input{Chapters/01ChapPreCalculus.tex}
+
+\chapter{Calculus Foundations: Proofs, Finite Sums, Limits at Infinity, and Geometric Sums}
+\label{chap:Foundations}
+\input{Chapters/02ChapCalculusFoundations.tex}
+
+\chapter{Definite Integration as the Signed Area Under a Curve}
+\label{chap:DefiniteIntegration}
+\input{Chapters/03ChapDefiniteIntegration}
+
+\chapter{Properties of Functions:  Left and Right Limits, Types of Continuity, Boundedness, and Generalizations of Max and Min}
+\label{chap:FunctionProperties}
+\input{Chapters/04ChapFunctionProperties.tex}                                                                    
+\chapter{Differentiation}
+\label{chap:Differentiation}
+\input{Chapters/05ChapDifferentiation.tex}
+
+\chapter{Engineering Applications of the Derivative}
+\label{chap:ApplicationsDifferentiation}
+\input{Chapters/06ChapApplicationsDifferentiation.tex}
+
+\chapter{Antiderivatives and the Fundamental Theorems of Calculus}
+\label{chap:AntiDerivFundThmCalc}
+\input{Chapters/07ChapAntiDeritvativesFundThmCalc.tex}
+
+\chapter{Improper Integrals}
+\label{chap:ImproperIntegrals}
+\input{Chapters/08ChapImproperIntegrals.tex}
+
+\chapter{Ordinary Differential Equations}
+\label{chap:ODEs}
+\input{Chapters/09ChapODEs.tex}
+
+\chapter{Laplace Transforms through the Lens of Feedback Control}
+\label{chap:LaplaceTransformFeedbackControl}
+\input{Chapters/10ChapLaplaceTransformFeedback.tex}
+
+
+\chapter{Signals and Systems through the Lens of Circuits}
+\label{chap:SignalsSystems}
+\input{Chapters/11ChapSignalsSystems.tex}
+
+
+
+
+\pagestyle{plain}
+
+% \newpage
+
+% \appendix
+% \chapter{More on Feedback Control Design via the Laplace Transform}
+% \label{chap:AppFeedbackControlDesign}
+% %\input{Chapters/Appendices/MoreControl.tex}
+% \includepdf[pages=-]{graphics/Appendices/AppFdbkControl/SimplifiedControlTextbook31May2023.pdf}
+
+
+%% \chapter{To Learn on Your Own (if you want to): Cool and Important Things We Omitted From our Introduction to Calculus}
+%% \input{Appendices/FeedbackControl/Sec00.tex}
+
+\end{document}
+

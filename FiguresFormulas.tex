@@ -1,0 +1,356 @@
+\documentclass[letterpaper]{book}
+\PassOptionsToPackage{usenames,dvipsnames,svgnames,table,xcdraw}{xcolor}
+\PassOptionsToPackage{dvipsnames,svgnames,table,xcdraw}{enumitems}
+
+\input{Defines/definesPackages}
+\input{Defines/definesCommands}
+\input{Defines/definesJuliaCodeCell}
+\parindent 0pt
+
+\begin{document}
+
+\chapter{Miscellaneous Things for the Book or Projects}
+
+\newpage
+
+\chapter{Image for teaching limits}
+
+
+
+\begin{tikzpicture}
+
+% Draw the two solid lines
+\draw[ultra thick] (0,1.5) -- (12,1.5);
+\draw[ultra thick] (0,-1.5) -- (12,-1.5);
+
+% Draw the dotted line
+\draw[dotted, ultra thick] (0,0) -- (12,0);
+
+% Add the label L
+\node at (-0.5,0) {\Large  $\bm{L}$};
+
+% Add the label for 2 epsilon
+\draw[<->] (6.5,0) -- (6.5,1.5);
+\node at (7,0.75) {\Large $\bm{\epsilon}$};
+
+\draw[<->] (10.,0) -- (10,-1.5);
+\node at (10.5,-0.75) {\Large $\bm{\epsilon}$};
+
+\end{tikzpicture}
+
+
+
+
+
+\newpage
+
+\section{Formulas for the Book Cover}
+
+\begin{enumerate}
+\Large
+\itemsep4em % Adjust the space between items here
+
+
+
+\item $$
+e := \lim_{n \to \infty } \left( 1 + \frac{1}{n} \right)^n
+$$
+
+
+\item $$
+\int_a^b  dV_{\rm x{\text{-axis}}} = \int_a^b \pi \left( f^2(x) - g^2(x)\right)\,dx
+$$
+
+\item $$
+\lim_{x \to x_0^-} f(x):=  \lim_{h \to 0^-} f(x_0+h)
+$$
+
+\item $$
+f(x) \approx f(x_0) + A ( x - x_0) := f(x_0) + \frac{\partial f(x_0)}{\partial x} ( x - x_0)
+$$
+
+
+
+\item $$
+x_{k+1}=x_k - s \left( \nabla f(x_k) \right)
+$$
+
+\item
+\begin{align*}
+\text{Minimize} \quad & f(x)\\
+\text{subject to} \quad & g_i(x) = 0, ~ 1\le i \le m,
+\end{align*}
+
+
+\item $$
+\frac{d}{dt} \frac{ \partial {\cal L}(q, \dot{q})}{\partial\dot{q}} - \frac{ \partial {\cal L}(q, \dot{q})}{\partial q} = \Gamma
+$$
+
+\item $$
+\int u \, dv = u\cdot v - \int v \, du
+$$
+
+\item $$
+\frac{d}{dx} \left[ \int_a^x f(t) \, dt \right] = f(x)
+$$
+
+\item $$
+e^{A t}:=  \sum_{k=0}^\infty A^k \cdot \frac{t^k}{k!}
+$$
+
+
+
+\item $$
+e^{\im x}:= \cos(x) + \im \sin(x)
+$$
+
+
+\item $$
+\bigcap_{i=1}^n \nullspace\left(  J_{g_i}(x_0) \right) \subset   \nullspace\left( J_f(x_0) \right)
+$$
+
+
+\item $$
+v(t) = v_0 +  \int_{t_0}^t a(\tau) d\tau
+$$
+
+\item $$
+\int_{a}^{c} f(x)\, dx =\int_{a}^{b} f(x)\, dx + \int_{b}^{c} f(x)\, dx
+$$
+
+\item $$
+\nabla \left( f(x) \bullet g(x) \right) = \left[ \frac{\partial g(x)}{\partial x} \right]^\top \cdot  f(x)  + 
+\left[ \frac{\partial f(x)}{\partial x} \right]^\top \cdot g(x)
+$$
+
+\item $$
+S = \int_{t_1}^{t_2} \sqrt{\left(\frac{dx}{dt}\right)^2 + \left(\frac{dy}{dt}\right)^2} \, dt
+$$
+
+\end{enumerate}
+
+\newpage
+\section{TikZ for Project 3}
+
+\subsection{Decomposed TF for the BallBot}
+\bigskip
+
+\begin{tikzpicture}[auto, node distance=2cm, >=latex']
+ % We define the styles for the blocks and the arrows
+ \tikzset{
+block/.style = {draw, rectangle, thick, draw=blue!80, line width=2pt, minimum height=3em, minimum width=8em},
+line/.style = {draw, -latex', thick, red, line width=2pt},
+}
+
+ % Motor torque block
+ \node [block] (motor) {\Large $\frac{27.346}{s^2 - 9.767}$ };
+ \node [above of=motor,node distance=1cm] (motorlabel) {\textbf{\Large Torque to Angle}};
+
+ % Body orientation block
+ \node [block, right of=motor, node distance=4.5cm] (body) {- 0.18673 {\Large $\frac{s^2- 21.9133}{s} $}};
+ \node [above of=body,node distance=1cm] (bodylabel) {\textbf{\Large Angle to Speed}};
+
+ % Arrows and labels for input and output
+ \draw [line] ([xshift=-2cm]motor.west) -- (motor.west) node[midway, above, black] {\Large $\tau(s)$}; 
+ %%node[at start, left, black] {\large Input};
+ \draw [line](motor.east) -- (body.west) node[midway, above, black] {\Large $\theta(s)$};
+ \draw [line] (body.east) -- ([xshift=2cm]body.east) node[midway, above, black] {\Large $V(s)$};
+ %node[at end, right, black] {\large Output};
+
+\end{tikzpicture}
+
+\subsection{First Closed-Loop with Pre-compensator}
+
+\bigskip
+
+\begin{tikzpicture}[>=Latex, thick, line/.style={draw=red, line width=2pt}, border/.style={draw=blue!80, line width=2pt}, scale=1.2, every node/.style={scale=1.2}]
+% Define styles for blocks, sum nodes, input and output
+\tikzstyle{block} = [draw, fill=white, rectangle, minimum height=3em, minimum width=6em, border]
+\tikzstyle{sum} = [draw, fill=white, circle, node distance=2cm, border]
+\tikzstyle{input} = [coordinate]
+\tikzstyle{output} = [coordinate]
+
+% Nodes placement
+\node [input, name=input] {};
+\node [block, right of=input, node distance=2.7cm] (filter) {$K_1$ {\Large  $\frac{z_1}{s + z_1}$ } };
+\node [sum, right of=filter, node distance=2.4cm] (sum) {\(\Sigma\)};
+\node [block, right of=sum, node distance=2.6cm] (controller) {$K_d~s + K_p$};
+\node [block, right of=controller, node distance=3.5cm] (system) {\Large $ \frac{27.346}{s^2 - 9.767 }$};
+\node [output, right of=system, node distance=2.4cm] (output) {};
+
+% Draw edges
+\draw[line=2pt,->] (input) -- node[above] {$\theta^{des}(s)$} (filter);
+\draw[line=2pt,->] (filter) -- node[above] { } (sum);
+\draw[line=2pt,->] (sum) -- node[above] {} (controller);
+\draw[line=2pt,->] (controller) -- node[above] {$\tau(s)$} (system);
+\draw[line=2pt] (system) -- ++(1.5,0) coordinate (feedbackPoint); % Extend line to the right for feedback
+\draw[line=2pt,->] (system) -- node[above] {$\theta(s)$} (output); % Continue to output
+
+% Creating a new feedback loop without the Y(s) block
+\draw[line=2pt] (feedbackPoint) |- ($(sum)!0.5!(controller)-(0,1cm)$);
+\draw[line=2pt,->] ($(sum)!0.5!(controller)-(0,1cm)$) -| node[pos=0.99, right] {$ $} (sum.south);
+
+% Labeling the sum block
+\draw (sum.west) ++(-0.15,-0.3) node {$+$};
+\draw (sum.south) ++(0.25,-0.1) node {$-$};
+\end{tikzpicture}
+
+
+
+
+\subsection{First Closed-Loop with Pre-compensator and an Extra Block that I do not want}
+
+\bigskip
+
+\begin{center}  
+\begin{tikzpicture}[>=Latex, thick, line/.style={draw=red, line width=2pt}, border/.style={draw=blue!80, line width=2pt}, scale=1.0, every node/.style={scale=1.0}]
+% Define styles for blocks, sum nodes, input and output
+\tikzstyle{block} = [draw, fill=white, rectangle, minimum height=3em, minimum width=6em, border]
+\tikzstyle{sum} = [draw, fill=white, circle, node distance=2cm, border]
+\tikzstyle{input} = [coordinate]
+\tikzstyle{output} = [coordinate]
+
+% Nodes placement
+\node [input, name=input] {};
+\node [block, right of=input, node distance=2.7cm] (filter) { $K_1$ {\Large $\frac{z_1}{s + z_1}$  } };
+
+\node [sum, right of=filter, node distance=2.4cm] (sum) {\(\Sigma\)};
+\node [block, right of=sum, node distance=2.6cm] (controller) {$K_d~ s + K_p$};
+\node [block, right of=controller, node distance=3.5cm] (system) {\Large $ \frac{27.346}{s^2 - 9.767 }$};
+\node [above of=system,node distance=1cm]{\textbf{\Large Torque to Angle}};
+
+% New block
+\node [block, right of=system, node distance=3.5cm] (newblock) {-0.18673 \Large $ \frac{s^2- 21.993}{s}$}; 
+ \node [above of=newblock,node distance=1cm] (newblocklabel) {\textbf{\Large ~~Angle to Speed}};
+
+% New output node
+\node [output, right of=newblock, node distance=2.4cm] (newoutput) {};
+
+% Draw edges
+\draw[line=2pt,->] (input) -- node[above] {$\theta^{des}(s)$} (filter);
+\draw[line=2pt,->] (filter) -- node[above] { } (sum);
+\draw[line=2pt,->] (sum) -- node[above] {} (controller);
+\draw[line=2pt,->] (controller) -- node[above] {$\tau(s)$} (system);
+\draw[line=2pt,->] (system) -- node[above] {$\theta(s)$} (newblock);
+\draw[line=2pt,->] (newblock) -- node[above] {$V(s)$} (newoutput); % Arrow and label for new block
+
+% Feedback loop
+\draw[line=2pt] ($(system.east) + (0.4cm,0)$) |- ($(sum.south) - (0,1cm)$);
+\draw[line=2pt,->] ($(sum.south) - (0,1cm)$) -| node[pos=0.99, right] {$ $} (sum.south);
+
+% Labeling the sum block
+\draw (sum.west) ++(-0.15,-0.3) node {$+$};
+\draw (sum.south) ++(0.25,-0.1) node {$-$};
+\end{tikzpicture}
+\end{center}
+
+
+\subsection{Inner-Loop Outer-Loop Control}
+
+\begin{tikzpicture}[>=Latex, thick, line/.style={draw=red, line width=2pt}, border/.style={draw=blue!80, line width=2pt}, scale=0.8, every node/.style={scale=0.8}]
+% Define styles for blocks, sum nodes, input and output
+\tikzstyle{block} = [draw, fill=white, rectangle, minimum height=3em, minimum width=6em, border]
+\tikzstyle{sum} = [draw, fill=white, circle, node distance=2cm, border]
+\tikzstyle{input} = [coordinate]
+\tikzstyle{output} = [coordinate]
+
+% Nodes placement
+\node [input, name=input] {};
+\node [sum, right of=input, node distance=2.0cm] (newsum) {\(\Sigma\)};
+\node [block, right of=newsum, node distance=2.4cm] (newblock) {$K_2$ {\Large $  \frac{z_2}{s + z_2}$}};
+\node [above of=newblock,node distance=1cm] (C2label) {\textbf{\Large $\bm{C_2(s)}$}};
+\node [block, right of=newblock, node distance=3.5cm] (filter) {$K_1$ {\Large  $\frac{z_1}{s + z_1}$ } };
+\node [above of=filter,node distance=1cm] (Filterlabel) {\textbf{\Large $\bm{F(s)}$}};
+\node [sum, right of=filter, node distance=2.7cm] (sum) {\(\Sigma\)};
+\node [block, right of=sum, node distance=2.7cm] (controller) {$K_d~s + K_p$};
+\node [above of=controller,node distance=1cm] (C1label) {\textbf{\Large $\bm{C_1(s)}$}};
+\node [block, right of=controller, node distance=3.7cm] (system) {\Large $ \frac{27.346}{s^2 - 9.767}$};
+\node [above of=system,node distance=1cm] (systemlabel) {\textbf{\Large {\bf Orientation}}};
+\node [block, right of=system, node distance=3.9cm] (newblock2) {-0.18673 \Large $ \frac{s^2- 21.93}{s}$};
+\node [above of=newblock2,node distance=1cm] (newblock2label) {\textbf{\Large {\bf Speed}}};
+\node [output, right of=newblock2, node distance=3.0cm] (output) {};
+
+% Draw edges
+\draw[line=2pt,->] (input) -- node[above] {\Large $ V^{des}(s)$} (newsum);
+\draw[line=2pt,->] (newsum) -- (newblock);
+\draw[line=2pt,->] (newblock) -- node[above] {\Large $\theta^{des}$} (filter);
+\draw[line=2pt,->] (filter) -- (sum);
+\draw[line=2pt,->] (sum) -- (controller);
+\draw[line=2pt,->] (controller) -- node[above] {\Large  $\tau(s)$} (system);
+\draw[line=2pt,->] (system) -- node[above] {\Large $\theta(s)$} (newblock2);
+\draw[line=2pt,->] (newblock2) -- node[above] {\Large  $V(s)$} (output);
+
+% Feedback loop from system to sum
+\draw[line=2pt] (system.east) -- ++(0.6cm,0) |- ($(sum.south)+(0,-1cm)$);
+\draw[line=2pt,->] ($(sum.south)+(0,-1cm)$) -| (sum.south);
+
+% Labeling the sum block (existing one)
+\draw (sum.west) ++(-0.15,-0.3) node {$+$};
+\draw (sum.south) ++(0.25,-0.1) node {$-$};
+
+% Feedback loop from newblock2 to newsum
+\draw[line=2pt] (newblock2.east) -- ++(0.7cm,0) |- ($(newsum.south)+(0,-1.8cm)$);
+\draw[line=2pt,->] ($(newsum.south)+(0,-1.8cm)$) -| (newsum.south);
+
+% Labeling the new sum block
+\draw (newsum.west) ++(-0.15,-0.3) node {$+$};
+\draw (newsum.south) ++(0.25,-0.1) node {$-$};
+   
+\end{tikzpicture}
+
+\subsection{Isolating the controller elements}
+
+\begin{tikzpicture}
+[>=Latex, thick, line/.style={draw=red, line width=2pt}, border/.style={draw=blue!80, 
+line width=2pt}, scale=0.8, every node/.style={scale=0.8}]
+% Define styles for blocks, sum nodes, input and output
+\tikzstyle{block} = [draw, fill=white, rectangle, minimum height=3em, minimum width=6em, border]
+\tikzstyle{sum} = [draw, fill=white, circle, node distance=2cm, border]
+\tikzstyle{input} = [coordinate]
+\tikzstyle{output} = [coordinate]
+
+% Nodes placement
+\node [input, name=input] {};
+\node [sum, right of=input, node distance=2.0cm] (newsum) {\(\Sigma\)};
+\node [block, right of=newsum, node distance=3cm] (newblock) {$K_2$ {\Large $  \frac{z_2}{s+ z_2}$ } };
+\node [above of=newblock,node distance=1cm] (C2label) {\textbf{\Large $\bm{C_2(s)}$}};
+\node [block, right of=newblock, node distance=4.5cm] (filter) {$K_1$ {\Large  $\frac{z_1}{s + z_1}$ } };
+\node [above of=filter,node distance=1cm] (Filterlabel) {\textbf{\Large $\bm{F(s)}$}};
+\node [sum, right of=filter, node distance=3.7cm] (sum) {\(\Sigma\)};
+\node [block, right of=sum, node distance=3.7cm] (controller) {\large $K_d s + K_p$};
+\node [above of=controller,node distance=1cm] (C1label) {\textbf{\Large $\bm{C_1(s)}$}};
+
+% Draw edges
+%\draw[line=2pt,->] (input) -- node[above] {\Large $ V^{des}(s)$} (newsum);
+\draw[line=2pt,->] (newsum) -- (newblock);
+\draw[line=2pt,->] (newblock) -- node[above] {\Large $\theta^{des}$} (filter);
+\draw[line=2pt,->] (filter) -- (sum);
+\draw[line=2pt,->] (sum) -- (controller);
+
+% Extend a red arrow to the right from the controller block with label
+\draw[line=2pt,->] (controller.east) -- ++(2cm,0) node[midway, above] {\Large $\tau(s)$};
+
+\node [input, below of=input, node distance=1.5cm] (input2) {};
+\node [input, below of=input, node distance=3.0cm] (input3) {};
+
+
+% Draw a red line from input2 to the south port of newsum, label in black at the far left
+\draw[line=2pt,->,red] (input2) -| node[pos=0, left, black] {\Large $V(s)$} (newsum.south);
+
+% Draw a red line from input3 to the south port of sum, label in black at the far left
+\draw[line=2pt,->,red] (input3) -| node[pos=0, left, black] {\Large $\theta(s)$} (sum.south);
+
+% Draw a line from input to newsum with label at the far left
+\draw[line=2pt,->] (input) -- node[pos=0, left] {\Large $ V^{des}(s)$} (newsum);
+
+
+% Labeling the new sum block
+\draw (newsum.west) ++(-0.15,-0.3) node {$+$};
+\draw (newsum.south) ++(0.25,-0.1) node {$-$};
+
+% Labeling the sum block (existing one)
+\draw (sum.west) ++(-0.15,-0.3) node {$+$};
+\draw (sum.south) ++(0.25,-0.1) node {$-$};   
+\end{tikzpicture}
+
+\end{document}

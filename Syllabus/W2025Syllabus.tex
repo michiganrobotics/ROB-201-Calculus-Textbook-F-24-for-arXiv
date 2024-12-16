@@ -1,0 +1,398 @@
+\documentclass[letterpaper]{book}
+\PassOptionsToPackage{usenames,dvipsnames,svgnames,table,xcdraw}{xcolor}
+\PassOptionsToPackage{dvipsnames,svgnames,table,xcdraw}{enumitems}
+
+\input{Defines/definesPackages}
+\input{Defines/definesCommands}
+\input{Defines/definesJuliaCodeCell}
+%\parindent
+
+
+
+
+\setlength{\parskip}{2mm}
+\setlength{\cftbeforesecskip}{0.7mm}
+
+
+\begin{document}
+\lstset{extendedchars=true,literate={α}{$\alpha$}1 {β}{$\beta$}1 {γ}{$\gamma$}1 {π}{$\pi$}1}
+
+
+
+\begin{center}
+    {\Huge \bf Syllabus Winter 2025\\ Calculus for the Modern Engineer \\}
+    {\large Jessy Grizzle\\ Robotics Department, University of Michigan, Ann Arbor}
+\end{center}
+
+\bigskip
+
+\section*{Grading:}
+
+\begin{itemize}
+    \item 20\% 8 HW sets consisting of a written part and a jupyter notebook in Julia. [No late HW accepted. In compensation, two lowest scores in each category among HWs 1 to 7 are dropped; HW 8 cannot be dropped]
+    \item 20\% for 5 Individually completed quizzes (open for one week) [lowest Quiz score is dropped]
+    \item 9\% Course Participation 
+    \begin{itemize}
+        \item 4 \% total for midterm and end-of-term course evaluations
+        \item 5 \% for lecture check-ins (random times on random days). To encourage synchronous (in-class or Zoom) participation versus just watching the lecture recordings, check-in forms are trivial when completed synchronously with the live lecture. When completed asynchronously, they require a 20- to 30-word summary of the lecture.
+    \end{itemize}
+    \item 51\% 3 individual Projects, equally weighted
+    \begin{itemize}
+        \item \textbf{Numerical Integration:} Uses linear acceleration collected from the IMU of a drone. Students first work with ``clean data'' and build, using the Trapezoidal Rule, a ``real-time'' estimate of speed and position, such as
+        $$ v(t) = v(t_0) + \int_{t_0}^t a(\tau) \, d \tau.$$    
+        $$ p(t) = p(t_0) + \int_{t_0}^t v(\tau) \, d \tau.$$   
+        Students then experience how acceleration bias affects estimated speed and position. A one-line correction reminiscent of the measurement step in Kalman Filtering is introduced to correct for the bias. Students experimentally tune the filter's gains. The first project is deliberately short and sweet. The work can be viewed as numerically solving an ODE, but ODEs have not been covered at this point. The work is setting them up for ODEs. 
+        \item \textbf{Gradient Descent with Equality Constraints:} Part 1 of the project begins with the ballistic equations, choosing the initial speed and angle of a basketball so that it makes a free throw. Formulation one involves solving a $2 \times 2$ system of linear equations in the initial speed ($v_x, v_y)$, with time of flight fixed. Formulation two involves applying gradient descent to a cost function equal to the squared distance of the ball from the hoop's center at a fixed time (hence time of flight is still fixed); here, there are no constraints. Then, in pass three, the cost becomes time of flight plus initial speed squared, with the position of the hoop as a pair of linear constraints. The students are then taught within the project how to use JuMP, a professional package to verify all of their previous hand-coded results. In Part 2, the system is a floating base model of a single link with two points masses on its ends, to represent a very simple gymnast. Students are provided the dynamical model in JuMP (as a set of equality constraints via trapezoidal integration). Similar to the basketball problem, students optimize time of flight plus initial speed squared subject to linear constraints on the landing posture of the ``gymnast'', using JuMP. Then, because it is spectacular, they work with a diver on a 10-meter platform. Finally, they return to the fundamentals of gradient descent with constraints, no longer using JuMP, but using the ForwardDiff package to compute the required gradients. They have to code up the gradient descent with constraints for the diver. 
+        \item \textbf{Modeling and Feedback Control of a Planar Version of ROB 311's BallBot:} The project beings with understanding the BallBot and translating that understanding to computing the potential energy and kinetic energy of its two parts: a planar (representation) of a basketball and a single link torso that sits upon the basketball via three sets of omni-directional wheels. From the energy-based description of the model, they use Symbolic code to compute the so-called ``Robot Equations'' $\left( D(q) \cdot \ddot{q} + C(q, \dot{q}) \cdot \dot{q} + G(q) = \Gamma \right)$ using Lagrange's Method. They use software tools to compute a linear state-variable model of the robot and transfer function representations. The BallBot is very similar to a Segway. The complete control design for the Segway is given in the textbook, along with all steps for qualitative and numerical analysis of the controller gains. Students follow this method on the linear model of the BallBot, test the controller in simulation, first on the linearized model, and then on the full nonlinear model. Appropriate software tools to make these steps transparent and fun are provided. 
+    \end{itemize}
+\end{itemize}
+
+
+
+\begin{enumerate}[label={\large\arabic*}, font=\large]
+    
+\item {\Large \bf Pre-calculus: Notation, Functions, and Various Algebraic Facts}
+\begin{itemize}
+    \item 1 hour lecture.
+    \item Students are expected to review this material mostly on their own. 
+    \item 20 question Quiz over the material to ensure mastery.
+    \item The Approximation Principle is highlighted in HW01,
+\end{itemize}
+\section*{Learning Objectives}
+By the end of this chapter, the student should be able to:
+\begin{itemize}
+    \item Recognize calculus as the science of approximations.
+    \item Interpret mathematical notation and appreciate its efficacy in conveying complex mathematical ideas succinctly.
+    \item Revisit and refresh knowledge on key mathematical concepts that are crucial for understanding calculus.
+    \item Develop an understanding of the importance of algorithms in mathematical problem-solving and analysis.
+    \item Cultivate a taste for careful and precise mathematical reasoning.
+    \item Explore Euler's number,  \(e\), and learn how it arose from a simple everyday question.
+\end{itemize}
+
+\section*{Outcomes}
+Upon successful completion of this chapter, students will be able to:
+\begin{itemize}
+    \item Recognize the utility and importance of mathematical notation in the precise expression of mathematical concepts.
+    \item Observe the Approximation Principle at work through the study of numbers like \(\pi\), \(\sqrt{2}\), and \(e\).
+    \item Understand and apply the Bisection Algorithm as an example of the Approximation Principle in numerical methods.
+    \item Review and properly apply rules for manipulating inequalities.
+    \item Reaffirm understanding of fundamental concepts such as functions, domains, ranges, and inverses.
+    \item Conduct a thorough examination of roots and powers and their properties.
+    \item Review and consolidate knowledge of the key characteristics of exponential and logarithmic functions.
+    \item Utilize Euler's Formula to simplify complex trigonometric expressions effectively.
+    \item Revisit (or learn) the Binomial Theorem and its applications in algebraic expansions.
+    \item Learn how to effectively apply shifting and scaling operations to functions for various analytical purposes.
+\end{itemize}
+
+\bigskip
+
+\item {\Large \bf Calculus Foundations: Proofs, Finite Sums, Limits at Infinity, and Geometric Sums}
+\begin{itemize}
+    \item 4 hours lecture + recitation.
+    \item Written and Julia HWs
+\end{itemize}
+
+\section*{Learning Objectives}
+By the end of this chapter, the student should be able to:
+\begin{itemize}
+    \item Understand the significance of mathematical proofs and articulate their importance in Calculus and its applications.
+    \item Master the technique of proof by induction and apply it to demonstrate the validity of mathematical statements.
+    \item Comprehend the concept of limits and see some of their initial uses in Calculus.
+\end{itemize}
+
+
+\section*{Outcomes}
+Upon successful completion of this chapter, students will be able to:
+\begin{itemize}
+    \item Apply logical rules to construct (simple) mathematical arguments.
+    \item  Learn there are at least two kinds of infinity.
+    \item Analyze sums of powers of integers to build a foundational understanding of integration.
+    \item Calculate limits at infinity for functions that are significant in Calculus.
+    \item Acquire additional knowledge about Euler's number and its unique properties.
+\end{itemize}
+
+
+\bigskip
+
+\item {\Large \bf Definite Integration as the Signed Area Under a Curve}
+\begin{itemize}
+    \item 5 hours lecture + recitation.
+    \item Written and Julia HWs
+\end{itemize}
+
+\section*{Learning Objectives}
+By the end of this chapter, the student should be able to:
+\begin{itemize}
+\item Define and explain the concept of a definite integral within the context of calculus.
+\item Execute accurate computations of definite integrals using appropriate mathematical techniques, such as the Trapezoidal Rule and Simpson's Rule.
+\item Describe and apply the basic properties of definite integrals to solve problems.
+\item Recognize and demonstrate the applications of definite integrals in various engineering scenarios.
+\end{itemize}
+
+
+\section*{Outcomes}
+Upon successful completion of this chapter, students will be able to:
+\begin{itemize}
+\item Construct and calculate Riemann lower and upper sums to approximate definite integrals.
+\item  Acquire insight into what kinds of functions can be integrated.
+\item Employ numerical algorithms used in engineering practice to compute definite integrals.
+\item Utilize integration techniques to infer changes in position from a given velocity function, particularly in robotic applications.
+\item Identify the mathematical origins of parabolic trajectories in ballistic motion.
+\item Determine the area enclosed between two functions.
+\item Compute essential parameters for robotic models, such as total mass and center of mass.
+\item  Learn how to trick a single-variable integral into computing the volume of a solid of revolution.
+\end{itemize}
+
+
+\bigskip
+
+
+\item {\Large \bf Properties of Functions:  Left and Right Limits, Types of Continuity, Boundedness, and Generalizations of Max and Min}
+\begin{itemize}
+    \item 5 hours lecture + recitation.
+    \item Written and Julia HWs
+\end{itemize}
+
+\textcolor{red}{\bf Remark:} \textcolor{blue}{\bf This Chapter reveals some of the mathematical backbone of Calculus. Traditionally, much of this material is placed earlier in a Calculus course. Because many of the topics are abstract and very technical, we delayed them until you've gotten the hang of combining programming and numerical calculations when learning mathematical concepts.}
+
+\section*{Learning Objectives}By the end of this chapter, the student should be able to:
+\begin{itemize}
+\item Appreciate the foundational role of calculus in mathematical modeling and problem-solving, integrating programming and numerical methods to solidify these concepts.
+\item Analyze the behavior of functions at specific points using the concept of one-sided limits.
+\item Thoroughly understand the nature of function continuity and discover that continuity comes in more than one flavor.
+\item Derive closed-form expressions for the integrals of exponential functions and apply these techniques to integrate trigonometric functions.
+\item Determine the boundedness of functions and understand the implications for mathematical analysis and applications.
+\item Recognize that while maximum and minimum values are important, they are not the full story.
+\end{itemize}
+
+\section*{Outcomes}
+Upon successful completion of this chapter, students will be able to:
+\begin{itemize}
+\item Acquire both intuitive and formal understandings of one-sided limits and their calculation.
+\item Apply numerical methods to estimate one-sided limits and assess the continuity of functions using the epsilon-delta definition.
+\item Recognize when it is permissible to take limits within functions and apply this knowledge to the integration of exponentials.
+\item Identify and analyze piecewise continuous functions and extend this understanding to a broader class of Riemann integrable functions.
+\item Review and apply the concepts of maximum and minimum function values, and explore alternative behaviors when these extrema do not exist.
+\end{itemize}
+
+\bigskip
+
+\item {\Large \bf Differentiation}
+\begin{itemize}
+    \item 5 hours lecture + recitation.
+    \item Written and Julia HWs
+\end{itemize}
+
+\section*{Learning Objectives}
+By the end of this chapter, the student should be able to:
+\begin{itemize}
+\item Understand two conceptual views of a single-variable derivative
+\item Appreciate the effectiveness of various software tools for computing derivatives
+\item See real problems where single-variable derivatives are important in engineering.
+\item Make the leap to partial derivatives, which are single-variable derivatives applied to multivariable functions.
+\end{itemize}
+
+\section*{Outcomes}
+Upon successful completion of this chapter, students will be able to:
+\begin{itemize}
+ \item Apply the definition of the derivative as rise over run in the limit.
+ \item Understand the centrality of the derivative for linear approximation of a function.
+ \item Compute a few derivatives via the rise over run definition.
+ \item Obtain a sense of when common functions are differentiable and when they are not.
+ \item Learn how to compute derivatives with various software packages.
+ \item Master the Rules of Differentiation and Understand their Origin.
+  \item Apply single-variable derivatives to determine speed from position.
+  \item Apply the fact that a strictly positive derivative implies the function is strictly monotonically increasing.
+ \item Use L'H\^opital's Rule for limits of indeterminate form.
+  \item Compute Jacobians, gradients, and Hessians, with examples using software. 
+\item Understand and use the total derivative.
+ \end{itemize}
+
+
+\bigskip
+
+\item {\Large \bf Engineering Applications of the Derivative}
+\begin{itemize}
+    \item 5 hours lecture + recitation.
+    \item Written and Julia HWs
+\end{itemize}
+
+\section*{Learning Objectives}
+By the end of this chapter, the student should be able to:
+\begin{itemize}
+    \item Analyze and model engineering problems using the principles of calculus, specifically through the application of derivatives to understand system behaviors.
+    \item Develop strategies for solving optimization problems, both with and without constraints.
+    \item Critically assess the role of derivatives in determining system dynamics and understand the significance of dynamic equations in engineering contexts.
+    \item Apply the concept of energy to the analysis of mechanical systems using the framework of Lagrangian mechanics.
+\end{itemize}
+
+
+
+\section*{Outcomes}
+
+Upon successful completion of this chapter, students will be able to:
+\begin{itemize}
+    \item Calculate path length and arc length for given paths.
+    \item Solve engineering problems involving root finding and minimization.
+    \item Use gradient descent to find local minima of functions and understand its limitations.
+    \item Apply second derivative tests to determine the nature of critical points in functions.
+    \item Solve optimization problems involving equality and inequality constraints using Lagrange multipliers.
+    \item Derive and apply Lagrange’s equations to solve problems in dynamics.
+    \item Compute kinetic and potential energy for mechanical systems.
+    \item Model and analyze the motion of complex systems like multi-link manipulators using Lagrange’s formalism.
+    \item Determine moments of inertia for various bodies and understand their effects on rotational motion.
+\end{itemize}
+
+
+\bigskip
+
+\item {\Large \bf Antiderivatives and the Fundamental Theorems of Calculus}
+\begin{itemize}
+    \item 5 hours lecture + recitation.
+    \item Written and Julia HWs
+\end{itemize}
+
+\section*{Learning Objectives}
+
+By the end of this chapter, students should be able to:
+\begin{itemize}
+    \item Understand that antidifferentiation is essentially the inverse operation of differentiation.
+    \item Comprehend the two Fundamental Theorems of Calculus and explain the precise sense in which differentiation and integration are inverse operations on functions.
+    \item Understand that while antidifferentiation and definite integration are technically distinct operations, they are often perceived as identical in the context of Calculus education. This perception is partially justified by their closely related concepts. However, it's crucial to acknowledge the potential drawbacks of this viewpoint, particularly the confusion and discouragement that can arise from the complex rules associated with manually computing antiderivatives.
+
+    \item Appreciate the historical and practical context of computing antiderivatives by hand, and recognize the modern approaches that render hand computations almost obsolete for all but the simplest of cases.
+\end{itemize}
+
+
+\section*{Outcomes}
+
+Upon successful completion of this chapter, students will:
+\begin{itemize}
+    \item Be introduced to the concept of antiderivatives and familiarize themselves with elementary techniques for finding them.
+    \item Gain a thorough understanding of the Fundamental Theorems of Calculus, including their implications in both geometric and analytic contexts.
+    \item Develop an insight into the interplay between differentiation, antiderivatives, and definite integration, enhancing their comprehension of calculus as a whole.
+    \item Cultivate an appreciation for the traditional methods of finding antiderivatives while also understanding the value and efficiency of using computational tools for real-world applications.
+\end{itemize}
+
+
+\bigskip
+
+
+\item {\Large \bf Improper Integrals}
+\begin{itemize}
+    \item 2 hours lecture + recitation.
+    \item Written and Julia HWs
+\end{itemize}
+
+\section*{Learning Objectives}
+
+By the end of this chapter, students should be able to:
+\begin{itemize}
+    \item Define improper integrals and understand their significance within the context of calculus.
+    \item Identify integrals that may pose difficulties due to their unbounded nature or the behavior of the function being integrated.
+    \item  Answer the pressing question: can an integral be doubly improper?
+    \item Explore the applications of improper integrals, emphasizing their practical importance in Statistics and Probability.
+\end{itemize}
+
+\section*{Outcomes}
+
+Upon successful completion of this chapter, students will:
+\begin{itemize}
+    \item Master the technique of integrating over unbounded domains using limits.
+    \item Learn to manage and integrate functions with singularities or discontinuities by applying limits to circumvent infinite behavior at finite points, thus handling vertical asymptotes effectively.
+    \item Gain a comprehensive understanding of the analytical methods for solving improper integrals, employing antiderivatives to facilitate calculation.
+    \item Acquire skills in applying numerical methods, specifically Julia's \texttt{QuadGK}, for evaluating improper integrals, particularly when analytical solutions are challenging to obtain.
+    \item Delve into two probability theory examples that utilize improper integrals, reinforcing the concept’s application in real-world scenarios and theoretical studies.
+\end{itemize}
+
+
+\bigskip
+
+
+\item {\Large \bf Ordinary Differential Equations}
+\begin{itemize}
+    \item 8 hours lecture + recitation.
+    \item Written and Julia HWs
+\end{itemize}
+
+\section*{Learning Objectives}By completing this chapter, students will:
+
+\begin{itemize}
+\item Gain an introduction to differential equations, focusing on their significance and the various classifications.
+\item Learn the foundational theories and techniques for solving one-dimensional first-order ordinary differential equations (ODEs).
+\item Acquire knowledge on the fundamentals and solution methods for vector first-order ODEs.
+\item Explore the application of numerical methods in solving vector first-order ODEs.
+\item Delve into the characteristics of linear systems of first-order ODEs and their implications for mathematical modeling.
+\end{itemize}
+
+\section*{Outcomes}
+Upon mastering the content of this chapter, students will be equipped to:
+
+\begin{itemize}
+\item Understand the definition and classification of ODEs based on their order, linearity, and whether they are homogeneous or non-homogeneous.
+\item Engage with various strategies for tackling first-order ODEs, covering separable, linear, and select nonlinear equations.
+\item Dive into the theory and application of solving systems of linear differential equations, highlighting their importance across diverse applications.
+\item Comprehend the utilization of ODEs in modeling and solving real-world problems across various domains.
+\item Grasp the fundamentals of numerical methods designed for solving ODEs in scenarios where analytic solutions are challenging or unattainable.
+\item Deeply investigate linear systems of ODEs, focusing on:
+    \begin{itemize}
+    \item The structure and solution of linear vector ODEs, symbolized as $\dot{x} = Ax, x(t_0) = x_0$.
+    \item The concept and significance of the matrix exponential, denoted as $e^{At}$.
+    \item Essential attributes of the matrix exponential, such as $\frac{d}{dt} e^{At} = A e^{At} =  e^{At} A$.
+    \item Methods for solving linear vector ODEs, exemplified by $x(t) = e^{A(t-t_0)} x_0$.
+    \item The role of complex scalar exponentials,  $e^{\left( a + \im \omega \right) t}$,  in the context of ODE solutions.
+    \item The interplay between eigenvectors, eigenvalues, and the matrix exponential, such as  $Av = \lambda v \implies  e^{A(t-t_0)} v = e^{\lambda(t-t_0)} v$.
+    \item The criteria for stability in linear systems, ${\rm real} (\lambda) < 0 \implies \lim_{t\to \infty} e^{A(t-t_0)} v = 0_{n \times 1}$, underlining how the real parts of eigenvalues influence the system's long-term behavior.
+    \item The application of these principles to general initial conditions when $A$ has a complete set of eigenvectors.        
+    \end{itemize}    
+\end{itemize}
+
+\bigskip
+
+
+% \chapter{}
+% \label{chap:LaplaceTransformFeedbackControl}
+% \input{Chapters/10ChapLaplaceTransformFeedback.tex}
+
+\item {\Large \bf Laplace Transforms through the Lens of Feedback Control}
+\begin{itemize}
+    \item 10 hours lecture + recitation.
+    \item Written and Julia HWs
+\end{itemize}
+
+\section*{Learning Objectives}
+
+\begin{itemize}
+    \item To introduce the concept and mathematical theory of Laplace Transforms.
+    \item To become familiar with common Laplace transforms and their properties.
+    \item To understand the process and methods of finding inverse Laplace transforms.
+    \item To apply Laplace transforms for solving linear ordinary differential equations (ODEs).
+    \item To define and derive transfer functions for linear time-invariant systems.
+    \item To understand the importance and application of transfer functions in the design of Singe-Input Single-Output (SISO) feedback loops.
+    \item To use appropriate software tools for each of the above topics.
+\end{itemize}
+
+\section*{Outcomes}
+
+\begin{itemize}
+    \item Gaining a foundational understanding of Laplace transforms and their application in engineering problems.
+    \item Mastery of standard Laplace transforms of common functions and their key properties.
+    \item Ability to understand inverse Laplace transforms using techniques such as partial fraction decomposition and tools in Julia.
+    \item Proficiency in applying Laplace transforms to simplify and solve linear ODEs with initial conditions.
+    \item Comprehensive understanding of transfer functions, their derivation, and significance in system analysis.
+    \item Applying knowledge of transfer functions to design and analyze SISO feedback loops in engineering systems, particularly in robotics.
+\end{itemize}
+
+\end{enumerate}
+
+\section*{Balance of Time}
+\begin{itemize}
+    \item Reinforcing key topics in integration.
+    \item Reinforcing key topics in differentiation.
+    \item Reinforcing key topics in ODEs
+\end{itemize}
+
+\end{document}
+
+
+

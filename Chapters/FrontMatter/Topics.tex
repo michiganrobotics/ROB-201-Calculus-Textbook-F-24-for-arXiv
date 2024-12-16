@@ -1,0 +1,301 @@
+In the following, we re-organize the Table of Contents of Calculus for the Modern Engineer into the more traditional Calculus I through IV groupings\footnote{Calculus III, Multivariable Calculus, is only represented through partial derivatives and Jacobians.}. The textbook does not cover infinite series and their associated convergence tests, multivariable integration and its associated topics of Green's functions, divergence, and curl,  nor linear algebra, the topic of ROB 101 \textit{Computational Linear Algebra}. It is hoped that this layout will allay fears that whole swaths of Calculus have been gutted (other than the aforementioned topics). We encourage students to take a traditional Multivariable Calculus course for the missing material. \\
+
+\section*{About the Course}
+\begin{enumerate}
+\item Philosophy of the Course
+  \item Introduction 
+  \item Julia and LLM/GenAI Resources 
+  \item Got Calculus Dread?
+  \item Resources for a Traditional Approach to Learning Calculus 
+  \item Julia-based Sources Recognizing the Important Role of Programming in Bringing Math to Life 
+\end{enumerate}
+
+\section*{Pre-calculus (Mostly for Student Review, Treated in HW 1)}
+\begin{enumerate}                                                                 
+\item Notation or the Language of Mathematics 
+   \item The Approximation Principle: The Essence of Calculus through the Lens of Irrational Numbers 
+   \item Algebraic Manipulation and Inequalities 
+  \item Functions, Domains, Ranges, Inverses, and Compositions 
+  \item Strictly Monotonic Functions and Relation to Existence of Inverse Functions 
+  \item Trigonometric and Inverse Trigonometric Functions 
+  \item 3-Link Manipulator
+  \item Powers and Roots for Integer and Rational Exponents
+  \item Real Exponents
+  \item Exponentials and Logarithms 
+  \item Euler’s Formula 
+  \item Hyperbolic Trig Functions and Relation to Euler’s Formula 
+  \item Binomial Theorem 
+  \item (Optional Read:) Proofs Associated with the Chapter
+\end{enumerate}
+
+
+
+\section*{Calculus I: Differentiation}
+\begin{enumerate}
+  \item Theoretical Notions
+  \begin{enumerate}
+    \item Vocabulary and Helpful Notation 
+    \item What is a Mathematical Proof? And Why are Mathematical Proofs Important? 
+    \item Countable Sets
+  \item Proofs by Induction
+     \item Maximum and Minimum Values of Sets and Their Generalizations 
+  \item Maximum and Minimum Values of Functions and Their Generalizations
+    \end{enumerate}
+  \item Specific Finite Sums, Geometric Sums, and Their Applications 
+   \item Limits at Infinity
+\begin{enumerate}
+ \item Rational Functions
+  \item Products and Ratios of Exponential and Monomial Terms 
+  \end{enumerate}
+  \item Finite Limits
+  \begin{enumerate}
+    \item Intuition for Limits from the Left and the Right 
+  \item Formal Definition of Limits from the Left and the Right 
+  \item Two-sided Limits and Continuous Functions 
+     \item The Power of Continuity Done Right: Key Properties of Continuous Functions or Why We Care about Continuity 
+    \item Limit Algebra 
+
+   \item The Squeeze Theorem 
+
+ \item L’Hôpital’s Rule for Evaluating Limits (taught after differentiation, of course)
+
+\end{enumerate}
+
+
+\item Differentiation
+\begin{enumerate}
+ 
+  \item The Derivative as the Local Slope of a Function
+  \item The Derivative as a Local Linear Approximation of a Function 
+  \item Software Tools
+  \begin{enumerate}
+  \item Symbolic Differentiation
+  \item Numerical Differentiation
+  \item Automatic Differentiation
+  \item Guidelines on Choosing Differentiation Methods  
+\end{enumerate}
+
+  \item Differentiation Rules that all Engineers are Expected to Understand 
+  \begin{enumerate}
+    \item Derivative of a sum
+    \item Product Rule
+    \item Ratio Rule
+    \item Chain Rule
+\end{enumerate}
+  \item Use Cases of the Single-variable Derivative 
+  \begin{enumerate}
+  \item From Position to Velocity 
+  \item If the Derivative does not Change Sign, the Function is Monotonic 
+  \item Extreme values of functions
+  \item Taylor’s and Maclaurin’s Polynomials and Series 
+\end{enumerate}
+
+
+\item Typically covered in Calc III, but part of Differentiation due to ROB 101 being a Pre-requisite
+ \begin{enumerate}
+   \item Partial Derivatives
+  \item Packaging Partial Derivatives to form Jacobians, Gradients, and Hessians 
+  \item The Total Derivative or the Chain Rule on Steroids 
+  \end{enumerate}
+
+\item Engineering Applications of the Derivative
+   \begin{enumerate}
+  \item Root Finding (Vector-valued functions)
+  \item Minimization without Constraints (multivariable, scalar-valued)
+  \begin{enumerate}
+    \item Gradient Descent Algorithm 
+  \item Second Derivative Tests for Local Min and Max 
+   \end{enumerate}
+  \item Lagrange Multipliers and Constrained Optimization 
+  \begin{enumerate}
+  \item Motivating Problems and Vocabulary of Constrained Optimization 
+  \item Lagrange Multiplier for a Problem with a Single Equality Constraint 
+  \item (Optional Read:) Lagrange Multipliers for a Problem with a Vector of Equality Constraints 
+  \item (Optional Read:) Proof behind Lagrange Multipliers for Equality Constraints 
+  \item 3-Link Manipulator Meets Inequality Constraints 
+ \end{enumerate}
+  
+  \item Dynamics à la Lagrange 
+   \begin{enumerate}
+  \item Kinetic and Potential Energy
+  \item Symbolic Computational Tools 
+  \item Lagrange’s Equations 
+   \end{enumerate}
+ \end{enumerate}
+\end{enumerate}
+
+ 
+  \item (Optional Read:) Proofs Associated with the Chapter
+
+
+
+ %%%%%%%%%%%%%%%%%%%%%
+
+\end{enumerate}
+
+\section*{Calculus II: Integration}
+\begin{enumerate}
+\item The Riemann Integral (aka, Riemann-Darboux Integral) 
+\begin{enumerate}
+ \item Simple Version of Riemann Lower and Upper Sums
+  \item Riemann Integral of a Continuous Function over a Closed Bounded Interval 
+  \item Illustration of the Riemann Indefinite Integral of a Monomial 
+  \item Are all Functions Riemann Integrable? 
+\end{enumerate}
+  \item Properties of the Riemann Integral 
+  \begin{enumerate}
+  \item A Basic Additivity Property of Area Under a Curve 
+  \item Integrating Linear Combinations 
+  \item Making Sense of an Integral when its Lower Limit is Greater than its Upper Limit 
+  \item Generalized First Additivity Property of Integrals 
+    \item Dummy Variables of Integration 
+  \item Shifting and Integration 
+  \item Scaling and Integration 
+\end{enumerate}
+
+ \item Numerical Methods for Approximating Riemann Integrals
+\begin{enumerate}
+  \item Trapezoidal Rule 
+  \item Simpson’s Rule
+  \item Julia Packages 
+  \item (Optional Read:) Even and Odd Functions as Great Test Cases
+\end{enumerate}
+
+ 
+
+  \item Applications of the Definite Integral 
+  \begin{enumerate}
+  \item From Speed to Change in Position 
+  \item Ballistic Motion 
+  \item Area between Two Functions 
+  \item Modeling the Links in a Robot 
+  \item Solids of Revolution or the Surprising Power of the Rectangle 
+     \item Path Length or Arc Length 
+  \item (Optional Read:) Derivation of the Center of Mass Equations for a Continuous Object 
+\end{enumerate}
+   \item Fundamental Theorems 
+  \begin{enumerate}
+  \item Uniting Integration and Differentiation through the Fundamental Theorems of Calculus 
+
+  \item Using the Second Fundamental Theorem of Calculus for Definite Integration 
+  \begin{enumerate}
+\item The Art of the Antiderivative: Inverting Differentiation Rules to Find Antiderivatives 
+  \item The Fundamental Rule: Integrating the Differential   
+  \item Inverting the Chain Rule: Integration by Substitution, aka u-Substitution 
+  \item Inverting the Product Rule: Integration by Parts 
+  \item Trigonometric Substitutions for Radicals 
+    \item Antiderivatives of Rational Functions by Partial Fraction Expansion (PFE) 
+  \end{enumerate}
+
+
+\end{enumerate}
+\item Why Conflating Integration and Antiderivatives is a Pedagogical Pitfall in Calculus 
+\item Unbounded Limits of Integration or Unbounded Functions 
+\begin{enumerate}
+  \item Type-I Improper Integrals: Unbounded Limits of Integration 
+    \item Comparision Test 
+  \item Absolute Integrability 
+  \item Type-II Improper Integrals: Vertical Asymptotes 
+\end{enumerate}
+
+  \item (Optional Read:) Proofs Associated with the Chapter
+\end{enumerate}
+
+\section*{Calculus III: Multivariable Calculus}
+\begin{enumerate}
+\item Jacobians, gradients, Hessians
+\item Nothing more. This is a deliberate choice.
+\end{enumerate}
+
+\section*{Calculus IV: ODEs}
+\begin{enumerate}
+\item Introduction 
+\begin{enumerate}
+    \item Let’s Start Simple: One equation, One Unknown, One Derivative 
+    \begin{enumerate}
+  \item Analytical Solutions via Antiderivatives (Separation of Variables and Integrating Factors)
+  \item Numerical Solutions 
+  \item Finite Escape Time 
+  \item One-Dimensional ODE with Multiple Solutions 
+  \end{enumerate} 
+  \item (Optional Read:) Can an ODE Have No Solution? 
+  \item (Optional Read:) The Independent Variable in an ODE can be any Strictly Increasing Quantity 
+\end{enumerate} 
+\item More Complex ODEs
+\begin{enumerate}
+  \item Higher-order ODEs and a Direct Current (DC) Motor Model 
+  \item Vector ODEs: Multidimensional Dynamics, Single Independent Variable 
+  \item The Return of the Robot Equations 
+\end{enumerate}  
+  \item What is a Solution to a First-order Vector ODE ($\dot{x} = f(x)$)
+  \item Existence and Uniqueness of Solutions 
+  \item ODE Examples from a Plethora of Engineering Domains 
+  \item Solving ODEs via Software
+  \item Linear Systems of ODEs 
+  \begin{enumerate}
+  \item Examples from Circuits and Mechanics 
+  \item Higher-order Linear ODEs 
+  \item Linearization of Nonlinear ODE Models 
+  \item The Matrix Exponential 
+  \item Software Tools for Linear ODEs
+  \item Properties of Solutions to Linear ODEs
+  \item Eigenvalues and Eigenvectors to the Rescue 
+  \item Exponential Stability of Linear Systems of ODEs with Implications for Nonlinear ODEs
+  \end{enumerate}
+  \item Euler’s Method
+  \item Resonance in ODEs
+  \item (Optional Read:) Proofs Associated with the Chapter
+\end{enumerate}
+
+\section*{Calculus IV: Laplace Transforms}
+  \begin{enumerate}
+  \item Setting the Stage for Developing Laplace Transforms in the Context of Feedback Control
+  \begin{enumerate}
+ \item Single-Input Single-Output (SISO) Linear Systems 
+  \item Input-Output and State-Variable Models 
+  \item Input-Output Models from Circuits 
+  \item A State-Variable Model of a (Planar) Segway Transporter 
+  \end{enumerate} 
+  \item The Laplace Transform and an Algebraic Approach to Linear ODEs
+    \begin{enumerate}
+    \item Definition and a Key Property
+  \item Common Laplace Transform Pairs 
+  \item (Optional Read:) How to Compute Laplace Transform Pairs by Hand 
+  \item Software Tools
+  \item Transfer Functions 
+  \item The Segway Transporter à la Laplace
+  \end{enumerate} 
+  \item Poles, Zeros, and BIBO Stability 
+  \item Unity Feedback Systems 
+  \begin{enumerate}
+\item Closed-loop Transfer Functions 
+    \item Two Common Compensators: Proportional (P) and Proportional-Derivative (PD) 
+  \end{enumerate}
+  \item Performance Specifications
+    \begin{enumerate}
+\item Steady-State Error 
+  \item Transient Response of First- and Second-order Systems 
+    \end{enumerate}
+    \item Relating Transient Response to Poles and Zeros
+    \begin{enumerate}
+    \item First-order System without a Zero 
+  \item Second-order System without a Zero 
+  \item Effects of Zeros 
+  \end{enumerate}
+  \item Design of Cascade Compensators and Pre-compensators 
+    \begin{enumerate}
+    \item First-order Systems 
+  \item Second-order Systems
+  \item Remarks on Dealing with More Complicated Systems 
+  \end{enumerate}
+  \item Feedback Design for a Linearized Model of a Planar Segway Transporter 
+     \begin{enumerate}
+  \item Controlling Body Lean Angle 
+  \item Controlling Speed and Lean Angle
+  \item The Real Deal: Implementing the Controller on the Nonlinear Model 
+  \item (Optional Read:) Robot Equations for a Planar Segway 
+  \end{enumerate}
+
+\end{enumerate}
+
+

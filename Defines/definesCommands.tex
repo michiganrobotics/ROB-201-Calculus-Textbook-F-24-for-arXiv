@@ -1,0 +1,314 @@
+
+\newcommand{\rb}[1]{\raisebox{1.5ex}{#1}}
+ \newcommand{\trace}{\mathrm{trace}}
+
+
+
+%\def\real{\mathbb{R}}
+\newcommand{\real}{\mathbb R}
+\def\reals{\mathbb{R}} %????
+\newcommand{\nat}{\mathbb N}   
+\newcommand{\whole}{\mathbb Z}    
+\newcommand{\cp}{\mathbb C}    
+\newcommand{\rat}{\mathbb Q} 
+\newcommand{\im}{\mathbb i}
+\newcommand{\impart}[1]{\mathrm{imag} \left( #1 \right)}
+\newcommand{\repart}[1]{\mathrm{real} \left( #1 \right)}
+%\newcommand{\angle}[1]{\mathrm{angle} (#1 )}
+
+% Hack for a bold integral sign
+\newcommand{\boldint}{%
+    \ThisStyle{%
+        \setbox0=\hbox{$\SavedStyle\int$}%
+        \ooalign{%
+            \hfil\scalebox{1.05}[1]{$\SavedStyle\int$}\hfil\cr
+            \hfil\scalebox{1.1}[1]{$\SavedStyle\int$}\hfil\cr
+            \hfil\scalebox{1.15}[1]{$\SavedStyle\int$}\hfil\cr
+        }%
+    }%
+}
+\newcommand{\customdot}[1]{\stackon[1.5pt]{$#1$}{\tiny\textbullet}}
+
+
+
+\newcommand{\ds}{\displaystyle}
+\newcommand{\mf}[2]{\frac{\ds #1}{\ds #2}}
+\newcommand{\book}[2]{{Boyd, Page~#1, }{Prob.~#2}}
+\newcommand{\Kuttler}[1]{Kuttler 2017, A First Course in Linear Algebra, Page(s)~#1}
+\newcommand{\spanof}[1]{\mathrm{span} \{ #1 \}}
+\newcommand{\colspanof}[1]{\mathrm{col~span} \{ #1 \}}
+\newcommand{\nullspace}[0]{\mathrm{null}}
+\newcommand{\nullity}[0]{\mathrm{nullity}}
+\newcommand{\range}[0]{\mathrm{range}}
+\newcommand{\cost}[0]{\mathrm{f}}
+\newcommand{\rank}[0]{\mathrm{rank}}
+\newcommand{\diag}[0]{\mathrm{diag}}
+\newcommand{\prem}[0]{\mathrm{p_{\rm rem}}}
+\newcommand{\bigO}[0]{\mathrm{O}}
+\newcommand{\ustep}[0]{u_{\rm stp}}
+
+\newcommand{\sign}[0]{\mathrm{sign}}
+\newcommand{\acosh}[0]{\mathrm{acosh}}
+\newcommand{\asinh}[0]{\mathrm{asinh}}
+\newcommand{\atan}[0]{\mathrm{atan}}
+\lstset{
+  literate={divSign}{{$\div$}}1
+}
+
+
+\newcommand{\protextjwg}[1]{\protect\( #1 \protect\)}
+
+
+\newcommand{\cprod}[0]{\cdot \ldots \cdot}
+
+
+
+\newcommand{\chatgpt}[0]{\textbf{ChatGPT}}
+
+
+%%%%%%%%%%%%%%%%%%%%From the ECE Contrtol Book
+\newcommand{\bit}[1]{\textcolor{blue}{\it  #1 }}
+\newcommand{\emphas}[1]{\textcolor{blue}{  #1 }}
+
+
+
+\newcommand{\reviewbox}[1]{ \begin{tcolorbox}
+\begin{minipage}{0.9\textwidth}
+#1 
+\end{minipage}
+\end{tcolorbox}
+}
+
+
+\newcommand{\UnitStep}[0]{u{\protectjwg{_{\rm s}}}}
+
+%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%
+% Bruce added below
+%%%%%%%%%%%%%%%%%%%
+\newcommand{\transpose}{\mathsf{T}}
+\DeclareDocumentCommand{\zeros}{ O{} }{\textbf{0}_{#1}}
+\newcommand\inv[1]{#1\raisebox{1.15ex}{$\scriptscriptstyle-\!1$}}
+\newcommand{\Exp}{\mathrm{Exp}}
+\newcommand{\Log}{\mathrm{Log}}
+\newcommand{\arcos}{\mathrm{arccos}} 
+\newcommand{\sinc}{\mathrm{sinc}}  
+\newcommand{\rect}{\mathrm{rect}}
+\newcommand{\tri}{\mathrm{tri}}
+\renewcommand{\im}{\mathop{\bm{\mathrm i}}}
+
+% \newcommand{\company}{ \textcolor{blue}{\bf Algorithms in Motion}\textregistered}
+% }
+
+\newcommand{\company}{\textcolor{blue}{\bfseries Algorithms in Motion}\textsuperscript{\textregistered}}
+
+
+%%\href{https://www.dropbox.com/s/1pzva81t4shnd22/ROB_101_Textbook_11April2023.pdf?dl=0}{textbook}
+
+\newtheorem{remark}{Remark}
+%%%%%%%%%%%%%%%%%%%
+% Bruce added above
+%%%%%%%%%%%%%%%%%%%
+
+
+
+%\newcommand{\dim}[0]{\mathrm{dim}}
+ \newcommand{\cov}{\mathrm{cov}}
+ \newcommand{\E}{\mathcal{E}}
+\parindent 0pt
+
+\newcommand{\notimplies}{%
+  \mathrel{{\ooalign{\hidewidth$\not\phantom{=}$\hidewidth\cr$\implies$}}}}
+
+
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+
+\newcommand{\rbf}[1]{\text{\rmfamily\bfseries #1}}
+
+\usepackage{upgreek}
+\newcommand{\rbfalpha}{\bm{\upalpha}}
+
+\newcommand{\hilight}[1]{\colorbox{yellow}{#1}} % to use: \hl{this is some highlighted text}
+\newcommand{\red}[1]{{\textcolor{red}{#1}}}
+\newcommand{\textbfred}[1]{{\textcolor{red}{\bf #1}}}
+
+
+\newcommand{\blue}[1]{{\textcolor{blue}{#1}}}
+\newcommand{\jwg}[1]{[{\textbf{\textcolor{red}{JWG: #1}}}]}
+\newcommand{\kj}[1]{[{\textbf{\textcolor{teal}{KJ: #1}}}]}
+\newcommand{\bh}[1]{[{\textbf{\textcolor{blue}{Bruce: #1}}}]}
+
+\newcommand{\bprp}{{\bf BlackPen}\textcolor{red}{\bf RedPen}}
+\newcommand{\threebb}{{\textcolor{blue}{\bf 3Blue}\textcolor{brown}{\bf 1Brown}}}
+
+
+\newcommand\RED{\color{red}}
+\newcommand\BLUE{\color{blue}}
+
+
+\definecolor{darkblue}{rgb}{0,0,0.5}
+\definecolor{lightblue}{rgb}{0.88,1,1}
+%\definecolor{brightblue}{rgb}{0.0, 0.6, 1.0} % Adjust the RGB values to make the color brighter if necessary
+\definecolor{jwgbluegray}{rgb}{0.8, 0.95, 0.95} % Light grayish blue
+
+%% for the empheq environment from Fawwaz Ulabi
+\definecolor{none}{cmyk}{0.0, 0.0, 0.0, 0.0}
+% \newcommand*\bluebox[1]{%
+%   \colorbox{jwgbluegray}{\hspace{1em}#1\hspace{1em}}}
+ %% for the empheq environment
+% Redefine the \bluebox command to use TikZ for drawing a frame around the content
+\definecolor{brightblue}{RGB}{0, 0, 239} % More vibrant bright blue for the frame
+
+% Redefine the \bluebox command to use TikZ for drawing a more prominent frame around the content
+\newcommand*\bluebox[1]{%
+  \tikz[baseline=(X.base)]\node [draw=brightblue, fill=jwgbluegray, very thick, rectangle, inner sep=2mm, rounded corners=2pt] (X) {#1};%
+}
+
+%   % Jessy's modified commands
+% \newcommand{\emstat}[1]{\begin{center} \fcolorbox{none}{ltpurple}{%   %%JWG
+%  \begin{minipage}{525pt}#1\end{minipage}}\bigskip \end{center}}
+%  %% \begin{minipage}{450pt}#1\end{minipage}}\bigskip \end{center}} %% original value
+
+% Edits on 2 Feb 2024
+\newtcolorbox{emstatbox}[1][]{
+  breakable,
+  %colback=ltpurple,
+  colback=jwgbluegray,
+  colframe=brightblue, %%none,
+  boxsep=0pt,
+  left=2pt,
+  right=2pt,
+  top=5pt,
+  bottom=5pt,
+  arc=0pt,
+  outer arc=0pt,
+  boxrule=2pt, %0pt,
+  #1
+}
+
+\newcommand{\emstat}[1]{\begin{center}\begin{emstatbox}#1\end{emstatbox}\end{center}}
+
+ 
+\definecolor{note}{rgb}{0.3,0.7,0.25}
+\definecolor{rephase}{rgb}{0.15,0.7,0.15}
+\definecolor{bag}{rgb}{0.6,0.6,0.2}
+
+\newcommand\x{\times}
+\newcommand\bigzero{\makebox(0,0){\text{\huge0}}}
+\newcommand*{\bord}{\multicolumn{1}{c|}{}}
+\newcommand*{\bordl}{\multicolumn{1}{|c}{}}
+
+\newcommand{\solution}{\textbf{Solution:~}}
+\newcommand{\solutions}{\textbf{Solutions:~}}
+
+\newcommand*{\Ans}{\textcolor{blue}{\bf Ans.~}}
+\newcommand*{\Qed}{\hfill $\blacksquare$}
+
+\newcommand\doverline[1]{\ThisStyle{%
+  \setbox0=\hbox{$\SavedStyle\overline{#1}$}%
+  \ht0=\dimexpr\ht0-.15ex\relax% CHANGE .15 TO AFFECT SPACING
+  \overline{\copy0}%
+}}
+
+\newcommand{\rob}{\textbb{ROB 101}}
+
+% \newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+%     \node[shape=circle, draw, inner sep=1pt, 
+%         minimum height={\f@size*1.6},] (char) {\vphantom{WAH1g}#1};}}
+\makeatother
+
+
+
+
+%\maketitle
+
+
+% \newtheorem{thm}{Theorem}
+% \numberwithin{thm}{chapter}
+% \newtheorem{prop}{Proposition}
+% \numberwithin{prop}{chapter}
+% \newtheorem{lemma}{Lemma}
+% \numberwithin{lemma}{chapter}
+% \newtheorem{claim}{Claim}
+% \numberwithin{claim}{chapter}
+% \newtheorem{rem}{Remark}
+% \numberwithin{rem}{chapter}
+% \newtheorem{def}{Definition}
+% \numberwithin{def}{chapter}
+
+\newtheorem{thm}{Theorem}
+\numberwithin{thm}{chapter}
+\newtheorem{example}[thm]{Example}
+\newtheorem{nonexample}[thm]{Non-Example}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{claim}[thm]{Claim}
+\newtheorem{rem}[thm]{Remark}
+\newtheorem{definition}[thm]{Definition}
+\newtheorem{notation}[thm]{Notation}
+\newtheorem{fact}[thm]{Fact}
+\newtheorem{notvocab}[thm]{Notation and Vocabulary}
+\newtheorem{question}[thm]{Question}
+\newtheorem{recall}[thm]{Recall}
+\newtheorem{exercise}[thm]{Exercise}
+\newtheorem{summary}[thm]{Summary}
+
+% This makes the table counter the same as the thm counter
+\makeatletter
+\let\c@table\c@thm
+\makeatother
+%
+\newcounter{keyfacts}
+\newtheorem{keyfact}[thm]{Key Fact}
+
+\definecolor{lightgold}{rgb}{0.933, 0.867, 0.510} % Define a color for the light gold
+\definecolor{logictitlecolor}{rgb}{0.000, 0.447, 0.698} % Define a color for the title bar
+\definecolor{navy}{RGB}{0,0,128}
+
+
+% Define new tcolorbox environment 'thmColor'
+\newtcbtheorem[use counter=thm, number within=chapter]{thmColor}{Theorem}%
+{sharp corners, colback=green!30, colframe=green!80!blue, breakable, fonttitle=\bfseries}{thm}
+
+\newtcbtheorem[use counter=thm, number within=chapter]{propColor}{Proposition}%
+{sharp corners, colback=green!30, colframe=green!80!blue, breakable, fonttitle=\bfseries}{thm}
+
+\newtcbtheorem[use counter=thm, number within=chapter]{corColor}{Corollary}%
+{sharp corners, colback=green!30, colframe=black, breakable, fonttitle=\bfseries}{thm}
+
+\newtcbtheorem[use counter=thm, number within=chapter]{methodColor}{Method}%
+{sharp corners, colback=gray!30, colframe=blue!80!black, breakable, fonttitle=\bfseries}{thm}
+
+\newtcbtheorem[use counter=thm, number within=chapter]{observationColor}{Observation}%
+{sharp corners, colback=orange!50, colframe=orange!70!black, breakable, fonttitle=\bfseries}{thm}
+
+\newtcbtheorem[use counter=thm, number within=chapter]{factColor}{Fact}%
+{sharp corners, colback=orange!50, colframe=orange!70!black, breakable, fonttitle=\bfseries}{thm}
+
+\newtcbtheorem[use counter=thm, number within=chapter]{funColor}{Secrets of the Arcane}%
+{sharp corners, colback=magenta!50, colframe=magenta!100!black, coltitle=black, breakable, fonttitle=\bfseries}{thm}
+
+\newtcbtheorem[use counter=thm, number within=chapter]{logicColor}{Logic Principle }%
+{sharp corners, colback=lightgold, colframe=black, coltitle=white, breakable, fonttitle=\bfseries}{thm}
+
+% \begin{tcolorbox}[colback=mylightblue, title = {\bf Defining Functions in a Careful Manner}, breakable]
+
+% \begin{definition} What is a function?     
+
+% blah blah 
+
+% \end{definition}
+% \end{tcolorbox}
+
+%% For Control Chapter
+
+%\newtheorem{example}[thm]{Example}
+%\numberwithin{example}{chapter}
+\newtheorem{revquest}[thm]{\textcolor{red}{\bf Review Question:}}
+%\numberwithin{question}{chapter}
+
+
+
